@@ -49,15 +49,9 @@ while running:
 
 		#game logic
 
-		if event.type == pygame.KEYDOWN:
-			if event.key == pygame.K_d:
-				player_pos[0] += 3
-			elif event.key == pygame.K_a:
-				player_pos[0] -= 3
-
-		#mouse_pos = pygame.mouse.get_pos()
-		#player_pos = mouse_pos
-		#player_image_pos = (player_pos[0] - (player_image.get_width() / 2), player_pos[1] - (player_image.get_height() / 2))
+		mouse_pos = pygame.mouse.get_pos()
+		player_pos = (mouse_pos[0], 500)
+		player_pos = (player_pos[0] - (player_image.get_width() / 2), player_pos[1] - (player_image.get_height() / 2))
 
 		#draw sprites
 		draw_sprite(player_image, player_pos)
