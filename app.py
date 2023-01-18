@@ -2,7 +2,7 @@ import pygame
 from pygame.locals import *
 
 
-#dolor defenitions
+#color defenitions
 BLACK = (0, 0, 0)
 GRAY = (127, 127, 127)
 WHITE = (255, 255, 255)
@@ -20,9 +20,9 @@ LIGHT_ORANGE = (240, 200, 0)
 #init window
 pygame.init()
 displayInfo = pygame.display.Info()
-screen = pygame.display.set_mode((displayInfo.current_w, displayInfo.current_h))
-background = LIGHT_ORANGE
-
+screen = pygame.display.set_mode((1000, 500))
+background = pygame.image.load("bg.png").convert_alpha(screen)
+pygame.mouse.set_visible(False)
 
 #init game
 running = True
@@ -35,7 +35,8 @@ def draw_sprite(sprite, position):
 	screen.blit(sprite, position)
 
 def draw_bg():
-	screen.fill(background)
+	screen.blit(background, (0,0))
+	#screen.fill(background)
 
 #Game Loop
 while running:
@@ -50,7 +51,7 @@ while running:
 		#game logic
 
 		mouse_pos = pygame.mouse.get_pos()
-		player_pos = (mouse_pos[0], 500)
+		player_pos = mouse_pos
 		player_pos = (player_pos[0] - (player_image.get_width() / 2), player_pos[1] - (player_image.get_height() / 2))
 
 		#draw sprites
