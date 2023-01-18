@@ -19,7 +19,8 @@ LIGHT_ORANGE = (240, 200, 0)
 
 #init window
 pygame.init()
-screen = pygame.display.set_mode((1000, 500))
+displayInfo = pygame.display.Info()
+screen = pygame.display.set_mode((displayInfo.current_w, displayInfo.current_h))
 background = LIGHT_ORANGE
 
 
@@ -47,12 +48,19 @@ while running:
 		draw_bg()
 
 		#game logic
-		mouse_pos = pygame.mouse.get_pos()
-		player_pos = mouse_pos
-		player_image_pos = (player_pos[0] - (player_image.get_width() / 2), player_pos[1] - (player_image.get_height() / 2))
+
+		if event.type == pygame.KEYDOWN:
+			if event.key == pygame.K_d:
+				player_pos[0] += 3
+			elif event.key == pygame.K_a:
+				player_pos[0] -= 3
+
+		#mouse_pos = pygame.mouse.get_pos()
+		#player_pos = mouse_pos
+		#player_image_pos = (player_pos[0] - (player_image.get_width() / 2), player_pos[1] - (player_image.get_height() / 2))
 
 		#draw sprites
-		draw_sprite(player_image, player_image_pos)
+		draw_sprite(player_image, player_pos)
 		#end frame
 		pygame.display.update()
 
